@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
-public enum AxisOptions
+public enum AxisOptions 
 { 
-    Both, 
-    Horizontal, 
+    Both,
+    Horizontal,
     Vertical 
 }
 
-public class Joystick : MonoBehaviour
+public class Joystick : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
     public float Horizontal 
     { 
-        get 
+        get
         { 
             return (snapX) ? SnapFloat(input.x, AxisOptions.Horizontal) : input.x; 
         } 
@@ -20,14 +20,15 @@ public class Joystick : MonoBehaviour
 
     public float Vertical 
     { 
-        get 
-        {
+        get
+        { 
             return (snapY) ? SnapFloat(input.y, AxisOptions.Vertical) : input.y; 
-        } 
+        }
     }
 
-    public Vector2 Direction 
-    { get
+    public Vector2 Direction
+    { 
+        get 
         { 
             return new Vector2(Horizontal, Vertical); 
         } 
@@ -37,22 +38,22 @@ public class Joystick : MonoBehaviour
     {
         get
         { 
-            return handleRange; 
+            return handleRange;
         }
-        set 
-        { 
+        set
+        {
             handleRange = Mathf.Abs(value);
         }
     }
 
     public float DeadZone
     {
-        get 
-        {
-            return deadZone;
+        get
+        { 
+            return deadZone; 
         }
         set 
-        { 
+        {
             deadZone = Mathf.Abs(value);
         }
     }
@@ -61,32 +62,32 @@ public class Joystick : MonoBehaviour
     { 
         get
         { 
-            return AxisOptions; 
+            return AxisOptions;
+        } 
+        set 
+        { 
+            axisOptions = value; 
+        } 
+    }
+
+    public bool SnapX
+    {
+        get
+        { return snapX; 
         } 
         set 
         {
-            axisOptions = value; 
-        }
-    }
-
-    public bool SnapX 
-    { 
-        get
-        { 
-            return snapX;
-        } 
-        set 
-        { 
             snapX = value;
-        }
+        } 
     }
 
     public bool SnapY 
-    { get
+    {
+        get
         { 
             return snapY; 
         } 
-        set
+        set 
         { 
             snapY = value;
         } 
@@ -132,12 +133,12 @@ public class Joystick : MonoBehaviour
         handle.anchoredPosition = Vector2.zero;
     }
 
-    public virtual void OnPointerDown(InputAction.CallbackContext callback)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
-        OnDrag(callback);
+        OnDrag(eventData);
     }
 
-    public void OnDrag(InputAction.CallbackContext callback)
+    public void OnDrag(PointerEventData eventData)
     {
         cam = null;
         if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
@@ -145,11 +146,7 @@ public class Joystick : MonoBehaviour
 
         Vector2 position = RectTransformUtility.WorldToScreenPoint(cam, background.position);
         Vector2 radius = background.sizeDelta / 2;
-#if UNITY_ANDROID || UNITY_IOS
-        input = (Touchscreen.current.primaryTouch.position.ReadValue() - position) / (radius * canvas.scaleFactor);
-#elif UNITY_STANDALONE
-        input = (Mouse.current.position.ReadValue() - position) / (radius * canvas.scaleFactor);
-#endif
+        input = (eventData.position - position) / (radius * canvas.scaleFactor);
         FormatInput();
         HandleInput(input.magnitude, input.normalized, radius, cam);
         handle.anchoredPosition = input * radius * handleRange;
@@ -208,7 +205,7 @@ public class Joystick : MonoBehaviour
         return 0;
     }
 
-    public virtual void OnPointerUp(InputAction.CallbackContext callback)
+    public virtual void OnPointerUp(PointerEventData eventData)
     {
         input = Vector2.zero;
         handle.anchoredPosition = Vector2.zero;

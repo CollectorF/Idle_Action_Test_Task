@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class DynamicJoystick : Joystick
 {
-    public float MoveThreshold 
+    public float MoveThreshold
     { 
-        get 
+        get
         { 
-            return moveThreshold; 
-        } 
+            return moveThreshold;
+        }
         set 
-        { 
-            moveThreshold = Mathf.Abs(value); 
+        {
+            moveThreshold = Mathf.Abs(value);
         } 
     }
 
@@ -25,21 +25,17 @@ public class DynamicJoystick : Joystick
         background.gameObject.SetActive(false);
     }
 
-    public override void OnPointerDown(InputAction.CallbackContext callback)
+    public override void OnPointerDown(PointerEventData eventData)
     {
-#if UNITY_ANDROID || UNITY_IOS
-        background.anchoredPosition = ScreenPointToAnchoredPosition(Touchscreen.current.primaryTouch.position.ReadValue());
-#elif UNITY_STANDALONE
-        background.anchoredPosition = ScreenPointToAnchoredPosition(Mouse.current.position.ReadValue());
-#endif
+        background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
         background.gameObject.SetActive(true);
-        base.OnPointerDown(callback);
+        base.OnPointerDown(eventData);
     }
 
-    public override void OnPointerUp(InputAction.CallbackContext callback)
+    public override void OnPointerUp(PointerEventData eventData)
     {
         background.gameObject.SetActive(false);
-        base.OnPointerUp(callback);
+        base.OnPointerUp(eventData);
     }
 
     protected override void HandleInput(float magnitude, Vector2 normalised, Vector2 radius, Camera cam)
