@@ -2151,6 +2151,7 @@ Transform:
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children:
   - {fileID: 8618442551915785290}
+  - {fileID: 2471849174579464973}
   m_Father: {fileID: 8618522138785295334}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2656,6 +2657,7 @@ GameObject:
   - component: {fileID: 8558602029579675000}
   - component: {fileID: 5762881518118296511}
   - component: {fileID: 1925349290}
+  - component: {fileID: 8715163950806960249}
   m_Layer: 2
   m_Name: clothingSet_04
   m_TagString: Untagged
@@ -2743,4 +2745,95 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 51
   joystick: {fileID: 0}
-  isHarvesting: 0
+--- !u!114 &8715163950806960249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617486938481723006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf10899a5aa1aa48a34c343f1a3c771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worktool: {fileID: 2471849174579464968}
+--- !u!1001 &470670829902756687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8612367936457145146}
+    m_Modifications:
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.423
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.261
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6808318
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7050023
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.14420402
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.1365468
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -87.945
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 186.126
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -209.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080775, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_Name
+      value: Scythe_001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+--- !u!1 &2471849174579464968 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2649784652027080775, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+  m_PrefabInstance: {fileID: 470670829902756687}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2471849174579464973 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2649784652027080770, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+  m_PrefabInstance: {fileID: 470670829902756687}
+  m_PrefabAsset: {fileID: 0}
