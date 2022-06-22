@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     [Range(0.0f, 0.3f)]
     private float rotationSmoothTime = 0.12f;
+    [SerializeField]
+    private LayerMask layerMask;
 
     [SerializeField]
     private Joystick joystick;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         CalculateRotation(joystick.Direction);
+        CheckGroundType();
     }
 
     private void OnAnimatorMove()
@@ -68,5 +71,26 @@ public class PlayerController : MonoBehaviour
     {
         animIDSpeed = Animator.StringToHash("Speed");
         animIDIsHarvesting = Animator.StringToHash("IsHarvesting");
+    }
+
+    private void CheckGroundType()
+    {
+        if (joystick.Direction != Vector2.zero)
+        {
+            if (Physics.Raycast(agent.transform.position, Vector3.down, out RaycastHit hit, 5f, layerMask))
+            {
+                switch (hit.collider.tag)
+                {
+                    case "Level/Harvest":
+                        isHarvesting = true;
+                        break;
+                    case "Level/Walkable":
+                        isHarvesting = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
     }
 }
