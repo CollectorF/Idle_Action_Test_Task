@@ -5,19 +5,18 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NavMeshAgent))]
-[RequireComponent(typeof(InventoryController))]
+[RequireComponent(typeof(HarvestingController))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float animationsSpeed;
+    public HarvestingParameters parameters;
+    [SerializeField]
+    private Joystick inputJoystick;
     [SerializeField]
     [Range(0.0f, 0.3f)]
     private float rotationSmoothTime = 0.12f;
     [SerializeField]
     private LayerMask layerMask;
-
-    [SerializeField]
-    private Joystick joystick;
 
     private Animator animator;
     private NavMeshAgent agent;
@@ -39,14 +38,15 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+
         AssignAnimationID();
-        animator.speed = animationsSpeed;
+        animator.speed = parameters.Speed;
     }
 
 
     private void Update()
     {
-        CalculateRotation(joystick.Direction);
+        CalculateRotation(inputJoystick.Direction);
         CheckGroundType();
     }
 
@@ -56,16 +56,9 @@ public class PlayerController : MonoBehaviour
         agent.Move(currentVelocity);
     }
 
-    [ContextMenu("Stop")]
-    private void StopAnim()
-    {
-        animator.Play("Harvesting", 0, 14 / (float)72);
-        Debug.LogError("Stop");
-    }
-
     private void CalculateRotation(Vector2 direction)
     {
-        animator.SetFloat(animIDSpeed, joystick.Direction.magnitude, 0.05f, Time.deltaTime);
+        animator.SetFloat(animIDSpeed, inputJoystick.Direction.magnitude, 0.05f, Time.deltaTime);
         animator.SetBool(animIDIsHarvesting, isHarvesting);
 
         if (direction != Vector2.zero)
@@ -84,23 +77,27 @@ public class PlayerController : MonoBehaviour
 
     private void CheckGroundType()
     {
-        if (joystick.Direction != Vector2.zero)
+        if (Physics.Raycast(agent.transform.position, Vector3.down, out RaycastHit hit, 5f, layerMask))
         {
-            if (Physics.Raycast(agent.transform.position, Vector3.down, out RaycastHit hit, 5f, layerMask))
+            switch (hit.collider.tag)
             {
-                switch (hit.collider.tag)
-                {
-                    case "Level/Harvest":
+                case "Level/Harvest":
+                    if (inputJoystick.Direction != Vector2.zero)
+                    {
                         isHarvesting = true;
                         OnHarvest?.Invoke(true);
-                        break;
-                    case "Level/Walkable":
-                        isHarvesting = false;
+                    }
+                    else
+                    {
                         OnHarvest?.Invoke(false);
-                        break;
-                    default:
-                        break;
-                }
+                    }
+                    break;
+                case "Level/Walkable":
+                    isHarvesting = false;
+                    OnHarvest?.Invoke(false);
+                    break;
+                default:
+                    break;
             }
         }
     }

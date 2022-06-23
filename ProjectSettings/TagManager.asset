@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Level/Harvest
   - Level/Walkable
+  - Block
   layers:
   - Default
   - TransparentFX
