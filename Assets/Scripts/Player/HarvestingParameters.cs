@@ -4,5 +4,5 @@ using UnityEngine;
 public class HarvestingParameters : ScriptableObject
 {
     public float Speed;
-    public float StackSize;
+    public int StackSize;
 }

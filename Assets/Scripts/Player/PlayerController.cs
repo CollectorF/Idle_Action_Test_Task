@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     public HarvestingParameters parameters;
     [SerializeField]
-    private Joystick inputJoystick;
+    internal Joystick inputJoystick;
     [SerializeField]
     [Range(0.0f, 0.3f)]
     private float rotationSmoothTime = 0.12f;
@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
     public delegate void HarvestEvent(bool state);
 
     public event HarvestEvent OnHarvest;
-
 
     private void Awake()
     {
