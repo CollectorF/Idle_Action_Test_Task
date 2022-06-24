@@ -26,8 +26,13 @@ public class HarvestingController : MonoBehaviour
     public List<BlockController> blocks;
 
     public delegate void StackFullEvent();
+    public delegate void AddToStackEvent();
+    public delegate void RemoveFromStackEvent();
 
     public event StackFullEvent OnStackIsFull;
+    public event AddToStackEvent OnAddToStack;
+    public event RemoveFromStackEvent OnRemoveFromStack;
+
 
     private void Awake()
     {
@@ -59,6 +64,7 @@ public class HarvestingController : MonoBehaviour
                 currentBlockController.gameObject.transform.rotation = stack.transform.rotation;
                 currentBlockController.gameObject.transform.SetParent(stack.transform);
                 blocks.Add(currentBlockController);
+                OnAddToStack?.Invoke();
             }
             else
             {
@@ -70,6 +76,7 @@ public class HarvestingController : MonoBehaviour
     public void RemoveBlockFromStack(BlockController block)
     {
         blocks.Remove(block);
+        OnRemoveFromStack?.Invoke();
     }
 
     private void SetStackAnimationState(bool state)
