@@ -15,13 +15,15 @@ public class HarvestingController : MonoBehaviour
     private float stackAnimationDuration = 0.3f;
     [SerializeField]
     private float stackAnimationAmplitude = 5;
+    [SerializeField]
+    private float blockPickupJumpPower = 1;
 
     private PlayerController playerController;
     private BlockController currentBlockController;
-    private int blocksInStack;
     private Sequence stackAnimationSequence;
 
-    private int stackSize { get; set; }
+    public int StackSize { get; private set; }
+    public List<BlockController> blocks;
 
     public delegate void StackFullEvent();
 
@@ -29,10 +31,11 @@ public class HarvestingController : MonoBehaviour
 
     private void Awake()
     {
+        blocks = new List<BlockController>();
         playerController = GetComponent<PlayerController>();
         playerController.OnHarvest += ActivateWorktool;
         playerController.OnWalk += SetStackAnimationState;
-        stackSize = playerController.parameters.StackSize;
+        StackSize = playerController.parameters.StackSize;
         worktool.SetActive(false);
         stackAnimationSequence = CreateStackAnimation(stackAnimationAmplitude, stackAnimationDuration);
         SetStackAnimationState(false);
@@ -47,20 +50,26 @@ public class HarvestingController : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Block"))
         {
-            if (blocksInStack < stackSize)
+            if (blocks.Count < StackSize)
             {
                 currentBlockController = collider.gameObject.GetComponent<BlockController>();
                 currentBlockController.SetColliderAsTrigger(true);
-                currentBlockController.AnimateBlock(stack.transform.position + (Vector3)(playerController.inputJoystick.Direction * 0.5f), blockAnimationDuration);
+                currentBlockController.AnimateBlock(stack.transform.position + (Vector3)(playerController.inputJoystick.Direction * 0.5f),
+                    blockAnimationDuration, blockPickupJumpPower);
                 currentBlockController.gameObject.transform.rotation = stack.transform.rotation;
                 currentBlockController.gameObject.transform.SetParent(stack.transform);
-                blocksInStack++;
+                blocks.Add(currentBlockController);
             }
             else
             {
                 OnStackIsFull?.Invoke();
             }
         }
+    }
+
+    public void RemoveBlockFromStack(BlockController block)
+    {
+        blocks.Remove(block);
     }
 
     private void SetStackAnimationState(bool state)

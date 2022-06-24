@@ -28,10 +28,10 @@ public class BlockController : MonoBehaviour
         collider.isTrigger = state;
     }
 
-    public void AnimateBlock(Vector3 position, float duration)
+    public void AnimateBlock(Vector3 position, float duration, float jumpPower)
     {
         Sequence sequence = DOTween.Sequence()
             .Append(transform.DOScale(scaleInStack, duration))
-            .Join(transform.DOJump(position, 0.5f, 1, duration));
+            .Join(transform.DOJump(position, jumpPower, 1, duration));
     }
 }

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &783121713844102304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1613007718752784192}
+  m_Layer: 0
+  m_Name: FinalBlockPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1613007718752784192
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783121713844102304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7118520532168689108}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1264441691508761562
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +120,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7118520532168689108}
+  - component: {fileID: 4058852138066345288}
+  - component: {fileID: 177460848}
   m_Layer: 0
   m_Name: Barn
-  m_TagString: Untagged
+  m_TagString: Level/Barn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -110,9 +142,39 @@ Transform:
   m_Children:
   - {fileID: 3140674712545927686}
   - {fileID: 852192473108093407}
+  - {fileID: 1613007718752784192}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4058852138066345288
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7602568862882406254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.4793415, y: 0.52768105, z: 2.4870071}
+  m_Center: {x: -3.510251, y: 0.20159957, z: 0.34885216}
+--- !u!114 &177460848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7602568862882406254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9757f573084112478e958456220ea22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockEndPoint: {fileID: 1613007718752784192}
+  blockAnimationDuration: 1
+  blockUnloadJumpPower: 3
+  delayBetweenEachBlock: 0.3
 --- !u!1 &8760307686104993358
 GameObject:
   m_ObjectHideFlags: 0
