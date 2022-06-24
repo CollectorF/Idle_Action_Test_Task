@@ -18,20 +18,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask;
 
-    private Animator animator;
+    internal Animator animator;
     private NavMeshAgent agent;
 
     private int animIDSpeed;
     private int animIDIsHarvesting;
     private bool isHarvesting = false;
+    private bool isWalking = false;
 
     private Vector3 currentVelocity;
     private float targetRotation = 0;
     private float rotationVelocity = 0;
 
     public delegate void HarvestEvent(bool state);
+    public delegate void WalkEvent(bool state);
 
     public event HarvestEvent OnHarvest;
+    public event WalkEvent OnWalk;
 
     private void Awake()
     {
@@ -47,6 +50,16 @@ public class PlayerController : MonoBehaviour
     {
         CalculateRotation(inputJoystick.Direction);
         CheckGroundType();
+        if (inputJoystick.Direction != Vector2.zero && !isWalking)
+        {
+            isWalking = true;
+            OnWalk?.Invoke(isWalking);
+        }
+        else if (inputJoystick.Direction == Vector2.zero && isWalking)
+        {
+            isWalking = false;
+            OnWalk?.Invoke(isWalking);
+        }
     }
 
     private void OnAnimatorMove()
