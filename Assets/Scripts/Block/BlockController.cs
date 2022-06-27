@@ -10,7 +10,7 @@ public class BlockController : MonoBehaviour
     [SerializeField]
     private Vector3 scaleInStack;
 
-    private float blockCost { get; set; }
+    public int blockCost { get; private set; }
 
     private new Collider collider;
     private Vector3 startScale;

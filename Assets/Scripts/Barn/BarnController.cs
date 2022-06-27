@@ -16,10 +16,9 @@ public class BarnController : MonoBehaviour
     private HarvestingController harvestingController;
     private Coroutine dropoffCoroutine;
 
-    private void Awake()
-    {
+    public delegate void BlockSoldEvent(BlockController block);
 
-    }
+    public event BlockSoldEvent OnBlockSold;
 
     private void OnTriggerStay(Collider other)
     {
@@ -45,6 +44,7 @@ public class BarnController : MonoBehaviour
         harvestingController.RemoveBlockFromStack(item);
         item.gameObject.transform.SetParent(null);
         item.AnimateBlock(blockEndPoint.position, blockAnimationDuration, blockUnloadJumpPower);
+        OnBlockSold?.Invoke(item);
         yield return new WaitForSeconds(delayBetweenEachBlock);
         Destroy(item.gameObject, 1);
         dropoffCoroutine = null;
