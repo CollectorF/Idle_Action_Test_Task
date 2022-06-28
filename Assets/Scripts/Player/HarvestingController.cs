@@ -37,8 +37,10 @@ public class HarvestingController : MonoBehaviour
     {
         blocks = new List<BlockController>();
         playerController = GetComponent<PlayerController>();
+
         playerController.OnHarvest += ActivateWorktool;
         playerController.OnWalk += SetStackAnimationState;
+
         StackSize = playerController.parameters.StackSize;
         worktool.SetActive(false);
         stackAnimationSequence = CreateStackAnimation(stackAnimationAmplitude, stackAnimationDuration);
@@ -48,6 +50,14 @@ public class HarvestingController : MonoBehaviour
     private void ActivateWorktool(bool state)
     {
         worktool.SetActive(state);
+    }
+
+    public void HideWorktool(string name)
+    {
+        if (name == "Harvesting")
+        {
+            worktool.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider collider)

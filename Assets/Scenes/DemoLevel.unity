@@ -2135,6 +2135,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3918149459733411862, guid: 56b5dd90e05d9694eb5bcf42676d5eda, type: 3}
   m_PrefabInstance: {fileID: 1336591483}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1479158584 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8715163950806960249, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+  m_PrefabInstance: {fileID: 470670829316189602}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf10899a5aa1aa48a34c343f1a3c771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1548681817 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3918149459733411862, guid: 56b5dd90e05d9694eb5bcf42676d5eda, type: 3}
@@ -3061,6 +3072,38 @@ PrefabInstance:
     - target: {fileID: 2471849174579464968, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
       propertyPath: m_TagString
       value: Blade
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1479158584}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HideWorktool
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: HarvestingController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Harvesting
+      objectReference: {fileID: 0}
+    - target: {fileID: 5505616215491218161, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
+      propertyPath: OnAnimationComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8617486938481723006, guid: 78369c63bebd1244b9e07a1fbb5a9603, type: 3}
       propertyPath: m_Name

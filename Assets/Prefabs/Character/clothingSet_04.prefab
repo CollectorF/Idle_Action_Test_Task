@@ -2659,6 +2659,7 @@ GameObject:
   - component: {fileID: 5762881518118296511}
   - component: {fileID: 1925349290}
   - component: {fileID: 8715163950806960249}
+  - component: {fileID: 5505616215491218161}
   - component: {fileID: 162159925}
   - component: {fileID: 162159926}
   m_Layer: 2
@@ -2764,6 +2765,27 @@ MonoBehaviour:
   stack: {fileID: 470670828785586114}
   blockAnimationDuration: 0.3
   stackAnimationDuration: 0
+  stackAnimationAmplitude: 5
+  blockPickupJumpPower: 1
+  blocks: []
+--- !u!114 &5505616215491218161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617486938481723006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76ed95716c561042a900efe0a639c83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAnimationStart:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAnimationComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &162159925
 Rigidbody:
   m_ObjectHideFlags: 0
