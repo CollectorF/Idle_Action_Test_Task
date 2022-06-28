@@ -8,6 +8,7 @@ TagManager:
   - Level/Walkable
   - Block
   - Level/Barn
+  - Blade
   layers:
   - Default
   - TransparentFX

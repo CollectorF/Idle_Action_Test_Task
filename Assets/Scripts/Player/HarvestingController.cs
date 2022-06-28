@@ -57,7 +57,7 @@ public class HarvestingController : MonoBehaviour
             if (blocks.Count < StackSize)
             {
                 currentBlockController = collider.gameObject.GetComponent<BlockController>();
-                currentBlockController.SetColliderAsTrigger(true);
+                currentBlockController.SetColliderEnabledState(false);
                 currentBlockController.AnimateBlock(stack.transform.position + (Vector3)(playerController.inputJoystick.Direction * 0.5f),
                     blockAnimationDuration, blockPickupJumpPower);
                 currentBlockController.gameObject.transform.rotation = stack.transform.rotation;

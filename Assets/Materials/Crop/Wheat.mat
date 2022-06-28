@@ -142,12 +142,12 @@ Material:
     - _UVSec: 0
     - _Wiggle: 1
     - _WiggleRandomisation: 0.21
-    - _WiggleStrenght: 0.2
+    - _WiggleStrenght: 0.5
     - _Wind: 1
     - _WindAmplitudeMultiplier: 1
     - _WindDirectionSpeed: 5
     - _WindQuality: 4
-    - _WindStrenght: 0.2
+    - _WindStrenght: 0.5
     - _WindSwinging: 0.43
     - _ZWrite: 1
     - __dirty: 1

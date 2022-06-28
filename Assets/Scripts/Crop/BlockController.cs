@@ -20,12 +20,12 @@ public class BlockController : MonoBehaviour
         blockCost = parameters.Cost;
         collider = GetComponent<Collider>();
         startScale = transform.localScale;
-        SetColliderAsTrigger(false);
+        SetColliderEnabledState(true);
     }
 
-    public void SetColliderAsTrigger(bool state)
+    public void SetColliderEnabledState(bool state)
     {
-        collider.isTrigger = state;
+        collider.enabled = state;
     }
 
     public void AnimateBlock(Vector3 position, float duration, float jumpPower)
