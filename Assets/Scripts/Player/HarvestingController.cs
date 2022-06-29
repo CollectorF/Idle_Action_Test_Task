@@ -67,12 +67,7 @@ public class HarvestingController : MonoBehaviour
             if (blocks.Count < StackSize)
             {
                 currentBlockController = collider.gameObject.GetComponent<BlockController>();
-                currentBlockController.SetColliderEnabledState(false);
-                currentBlockController.AnimateBlock(stack.transform.position + (Vector3)(playerController.inputJoystick.Direction * 0.5f),
-                    blockAnimationDuration, blockPickupJumpPower);
-                currentBlockController.gameObject.transform.rotation = stack.transform.rotation;
-                currentBlockController.gameObject.transform.SetParent(stack.transform);
-                blocks.Add(currentBlockController);
+                MoveBlockToStack(currentBlockController);
             }
             OnAddToStack?.Invoke();
         }
@@ -103,5 +98,16 @@ public class HarvestingController : MonoBehaviour
             .Append(stack.transform.DOLocalRotate(new Vector3(0, -amplitude, 0), duration, RotateMode.LocalAxisAdd));
         sequence.SetLoops(-1);
         return sequence;
+    }
+
+    public void MoveBlockToStack(BlockController controller)
+    {
+        controller.SetColliderEnabledState(false);
+        controller.AnimateBlock(stack.transform.position + (Vector3)(playerController.inputJoystick.Direction * 0.5f),
+            blockAnimationDuration, blockPickupJumpPower);
+        controller.gameObject.transform.rotation = stack.transform.rotation;
+        controller.gameObject.transform.SetParent(stack.transform);
+        blocks.Add(controller);
+        OnAddToStack?.Invoke();
     }
 }

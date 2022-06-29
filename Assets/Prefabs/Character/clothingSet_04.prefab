@@ -2764,7 +2764,7 @@ MonoBehaviour:
   worktool: {fileID: 2471849174579464968}
   stack: {fileID: 470670828785586114}
   blockAnimationDuration: 0.3
-  stackAnimationDuration: 0
+  stackAnimationDuration: 0.3
   stackAnimationAmplitude: 5
   blockPickupJumpPower: 1
   blocks: []
@@ -2780,12 +2780,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76ed95716c561042a900efe0a639c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnAnimationStart:
-    m_PersistentCalls:
-      m_Calls: []
   OnAnimationComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8715163950806960249}
+        m_TargetAssemblyTypeName: HarvestingController, Assembly-CSharp
+        m_MethodName: HideWorktool
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Harvesting
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &162159925
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2881,6 +2890,26 @@ PrefabInstance:
     - target: {fileID: 2649784652027080775, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
       propertyPath: m_Name
       value: Scythe_001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652027080775, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_TagString
+      value: Blade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652981508740, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784652981508740, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_TagString
+      value: Blade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784653085905223, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2649784653465075956, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
+      propertyPath: m_TagString
+      value: Blade
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee5820ed07d85634a8e3ce390f32301e, type: 3}
@@ -3011,6 +3040,18 @@ PrefabInstance:
     - target: {fileID: 9151391717395413849, guid: 457e4f9235fd91543927e96aa1bbf68b, type: 3}
       propertyPath: m_Name
       value: Stack
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151391717395413851, guid: 457e4f9235fd91543927e96aa1bbf68b, type: 3}
+      propertyPath: childForceExpand.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151391717395413851, guid: 457e4f9235fd91543927e96aa1bbf68b, type: 3}
+      propertyPath: childForceExpand.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9151391717395413851, guid: 457e4f9235fd91543927e96aa1bbf68b, type: 3}
+      propertyPath: childForceExpand.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9151391717395413851, guid: 457e4f9235fd91543927e96aa1bbf68b, type: 3}
       propertyPath: constraintX.constraintType

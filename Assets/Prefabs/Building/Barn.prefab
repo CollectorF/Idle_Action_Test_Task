@@ -157,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.4793415, y: 0.52768105, z: 2.4870071}
-  m_Center: {x: -3.510251, y: 0.20159957, z: 0.34885216}
+  m_Size: {x: 2.0513077, y: 0.52768105, z: 3.7577744}
+  m_Center: {x: -2.7962341, y: 0.20159957, z: 0.49095535}
 --- !u!114 &177460848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockEndPoint: {fileID: 1613007718752784192}
   blockAnimationDuration: 1
-  blockUnloadJumpPower: 3
-  delayBetweenEachBlock: 0.3
+  blockUnloadJumpPower: 1.7
+  delayBetweenEachBlock: 0.05
 --- !u!1 &8760307686104993358
 GameObject:
   m_ObjectHideFlags: 0
