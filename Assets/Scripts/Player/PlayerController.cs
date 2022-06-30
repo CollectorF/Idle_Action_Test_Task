@@ -94,16 +94,14 @@ public class PlayerController : MonoBehaviour
             switch (hit.collider.tag)
             {
                 case "Level/Harvest":
-                    isHarvesting = true;
-                    OnHarvest?.Invoke(true);
-                    //else
-                    //{
-                    //    OnHarvest?.Invoke(false);
-                    //}
+                    if (inputJoystick.Direction != Vector2.zero)
+                    {
+                        isHarvesting = true;
+                        OnHarvest?.Invoke(true);
+                    }
                     break;
                 case "Level/Walkable":
                     isHarvesting = false;
-                    //OnHarvest?.Invoke(false);
                     break;
                 default:
                     break;

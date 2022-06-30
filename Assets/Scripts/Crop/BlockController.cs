@@ -7,19 +7,17 @@ public class BlockController : MonoBehaviour
 {
     [SerializeField]
     private BlockParameters parameters;
-    [SerializeField]
-    private Vector3 scaleInStack;
 
-    public int blockCost { get; private set; }
+    public int BlockCost { get; private set; }
+    public Vector3 ScaleInStack { get; private set; }
 
     private new Collider collider;
-    private Vector3 startScale;
 
     private void Awake()
     {
-        blockCost = parameters.Cost;
+        BlockCost = parameters.Cost;
+        ScaleInStack = parameters.ScaleInStack;
         collider = GetComponent<Collider>();
-        startScale = transform.localScale;
         SetColliderEnabledState(true);
     }
 
@@ -28,10 +26,19 @@ public class BlockController : MonoBehaviour
         collider.enabled = state;
     }
 
-    public void AnimateBlock(Vector3 position, float duration, float jumpPower)
+    public void AnimateBlock(Vector3 position, Vector3 scale, float duration, float jumpPower)
     {
         Sequence sequence = DOTween.Sequence()
-            .Append(transform.DOScale(scaleInStack, duration))
+            .Append(transform.DOScale(scale, duration))
             .Join(transform.DOJump(position, jumpPower, 1, duration));
+    }
+
+    public void AnimateBlock(Vector3 position, Vector3 scale, float duration, float jumpPower, Transform parent)
+    {
+        Sequence sequence = DOTween.Sequence()
+            .Append(transform.DOScale(scale, duration))
+            .Join(transform.DOJump(position, jumpPower, 1, duration))
+            .OnComplete(() => gameObject.transform.position = parent.transform.position);
+        gameObject.transform.SetParent(parent.transform);
     }
 }

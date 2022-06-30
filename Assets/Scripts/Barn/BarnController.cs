@@ -9,9 +9,11 @@ public class BarnController : MonoBehaviour
     [SerializeField]
     private float blockAnimationDuration = 0.7f;
     [SerializeField]
-    private float blockUnloadJumpPower = 1.5f;
+    private float blockUnloadJumpPower = 1.2f;
     [SerializeField]
     private float delayBetweenEachBlock = 0.3f;
+    [SerializeField]
+    private Vector3 blockScaleInBarn = new Vector3(3, 3, 3);
 
     private HarvestingController harvestingController;
     private Coroutine dropoffCoroutine;
@@ -36,14 +38,17 @@ public class BarnController : MonoBehaviour
                     return;
                 }
             }
+            else
+            {
+                harvestingController.ActivateStack(false);
+            }
         }
     }
 
     private IEnumerator DropoffCoroutine(BlockController item)
     {
         harvestingController.RemoveBlockFromStack(item);
-        item.gameObject.transform.SetParent(null);
-        item.AnimateBlock(blockEndPoint.position, blockAnimationDuration, blockUnloadJumpPower);
+        item.AnimateBlock(blockEndPoint.position, blockScaleInBarn, blockAnimationDuration, blockUnloadJumpPower);
         OnBlockSold?.Invoke(item);
         yield return new WaitForSeconds(delayBetweenEachBlock);
         Destroy(item.gameObject, 1);

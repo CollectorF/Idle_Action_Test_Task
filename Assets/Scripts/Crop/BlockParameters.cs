@@ -4,4 +4,5 @@ using UnityEngine;
 public class BlockParameters : ScriptableObject
 {
     public int Cost;
+    public Vector3 ScaleInStack;
 }

@@ -42,6 +42,6 @@ public class GameManager : MonoBehaviour
 
     private void UpdateCounter(BlockController block)
     {
-        gameplayUI.counter.SetCounter(block.blockCost);
+        gameplayUI.counter.SetCounter(block.BlockCost);
     }
 }

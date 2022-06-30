@@ -42,7 +42,8 @@ public class HarvestingController : MonoBehaviour
         playerController.OnWalk += SetStackAnimationState;
 
         StackSize = playerController.parameters.StackSize;
-        worktool.SetActive(false);
+        ActivateWorktool(false);
+        ActivateStack(false);
         stackAnimationSequence = CreateStackAnimation(stackAnimationAmplitude, stackAnimationDuration);
         SetStackAnimationState(false);
     }
@@ -52,11 +53,28 @@ public class HarvestingController : MonoBehaviour
         worktool.SetActive(state);
     }
 
+    public void ActivateStack(bool state)
+    {
+        stack.SetActive(state);
+    }
+
     public void HideWorktool(string name)
     {
         if (name == "Harvesting")
         {
             worktool.SetActive(false);
+        }
+    }
+
+    private void Update()
+    {
+        if (blocks.Count > 0)
+        {
+            ActivateStack(true);
+        }
+        else
+        {
+            ActivateStack(false);
         }
     }
 
@@ -103,10 +121,13 @@ public class HarvestingController : MonoBehaviour
     public void MoveBlockToStack(BlockController controller)
     {
         controller.SetColliderEnabledState(false);
-        controller.AnimateBlock(stack.transform.position + (Vector3)(playerController.inputJoystick.Direction * 0.5f),
-            blockAnimationDuration, blockPickupJumpPower);
-        controller.gameObject.transform.rotation = stack.transform.rotation;
-        controller.gameObject.transform.SetParent(stack.transform);
+        controller.AnimateBlock(new Vector3
+            (
+                stack.transform.position.x + playerController.inputJoystick.Direction.x * 0.3f,
+                stack.transform.position.y,
+                stack.transform.position.z + playerController.inputJoystick.Direction.y * 0.3f
+            ),
+            controller.ScaleInStack, blockAnimationDuration, blockPickupJumpPower, stack.transform);
         blocks.Add(controller);
         OnAddToStack?.Invoke();
     }
